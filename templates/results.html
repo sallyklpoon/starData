@@ -1,0 +1,80 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<header class="hero-image" style="
+background-image: url('https://i.gifer.com/E8jj.gif');
+background-repeat: no-repeat;
+background-size: cover;">
+
+    <div class="jumbotron jumbotron-fluid" style="background-color: transparent;">
+
+        <div class="container">
+            <h1 class="display-3 text-light">Prediction Results</h1>
+            <p class="lead text-light">Ta-da! Thanks for submitting your star data, here's the results...</p>
+        </div>
+
+    </div>
+</header>
+<div class="container text-center">
+
+    <div class="col d-flex justify-content-center align-items-center">
+        <img alt="Dancing Star"
+             src="https://i.pinimg.com/originals/ed/76/df/ed76df1b5da78ca7317a01cf9a648d0c.gif" \
+             style="max-width: 100px; display: block; "
+        />
+    </div>
+
+    <h1 class="display-5">
+        Your star is predicted to be a:
+        <span class="text-success">{{type}}</span>.
+    </h1>
+
+    <div class="card mx-auto mt-4 text-left" style="max-width: 600px;">
+        <div class="card-header">
+            The information you entered
+        </div>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Trait</th>
+                <th scope="col">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">Temperature (K)</th>
+                <td>{{temp}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Luminosity (L/Lo)</th>
+                <td>{{luminosity}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Radius (R/Ro)</th>
+                <td colspan="2">{{radius}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Absolute Magnitude (Mv)</th>
+                <td colspan="2">{{magnitude}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Star Colour</th>
+                <td colspan="2">{{colour}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Spectral Class</th>
+                <td colspan="2">{{spectral_class}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a class="btn btn-info btn-lg mt-4" href="/predict" role="button">
+        Make another prediction
+    </a>
+
+    <div class="p-5"></div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<header class="hero-image" style="
+background-image: url('https://media.tenor.com/TY1HfJK5qQYAAAAC/galaxy-pixel-art.gif');
+background-repeat: no-repeat;
+background-size: cover;">
+
+    <div class="jumbotron jumbotron-fluid" style="background-color: transparent;">
+
+        <div class="container">
+            <h1 class="display-3 text-light">Prediction Form</h1>
+            <p class="lead text-light">Submit your star's data</p>
+        </div>
+
+    </div>
+</header>
+
+<main class="container mb-6">
+    <form action="{% url 'predictPost' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="temperature">Temperature (K)</label>
+            <input type="number" class="form-control" id="temperature" name="temperature" required>
+        </div>
+        <div class="form-group">
+            <label for="luminosity">Luminosity (L/Lo)</label>
+            <input type="number" step="0.000001" class="form-control" id="luminosity" name="luminosity" required>
+        </div>
+        <div class="form-group">
+            <label for="radius">Radius (R/Ro)</label>
+            <input type="number" step="0.0001" class="form-control" id="radius" name="radius" required>
+        </div>
+        <div class="form-group">
+            <label for="absolute-magnitude">Absolute Magnitude (Mv)</label>
+            <input type="number" step="0.01" class="form-control" id="absolute-magnitude" name="absolute-magnitude"
+                   required>
+        </div>
+        <div class="form-group">
+            <label for="star-colour">Star colour</label>
+            <select class="form-control" id="star-colour" name="star-colour" required>
+                <option value="">Select a colour</option>
+                <option value="0">Blue</option>
+                <option value="1">Blue-White</option>
+                <option value="2">Orange</option>
+                <option value="3">Orange-Red</option>
+                <option value="4">Pale Yellow-Orange</option>
+                <option value="5">Red</option>
+                <option value="6">White</option>
+                <option value="7">White-Yellow</option>
+                <option value="8">Whitish</option>
+                <option value="9">Yellow-White</option>
+                <option value="10">Yellowish</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="spectral-class">Spectral Class</label>
+            <select class="form-control" id="spectral-class" name="spectral-class" required>
+                <option value="">Select a class</option>
+                <option value="0">A</option>
+                <option value="1">B</option>
+                <option value="2">F</option>
+                <option value="3">G</option>
+                <option value="4">K</option>
+                <option value="5">M</option>
+                <option value="6">O</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-md btn-info">Predict</button>
+    </form>
+    <div class="p-4"></div>
+</main>
+{% endblock content %}
